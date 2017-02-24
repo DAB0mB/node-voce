@@ -1,8 +1,8 @@
 {
   "targets": [
     {
-      "target_name": "node_voce_module",
-      "sources": ["src/cpp/node_voce.h"],
+      "target_name": "node_voce",
+      "sources": ["src/cpp/node_voce.cpp"],
       "cflags": ["-Wall", "-std=c++11"],
       "include_dirs" : ["<!(node -e \"require('nan')\")"],
       'xcode_settings': {

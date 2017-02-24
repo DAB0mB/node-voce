@@ -68,6 +68,7 @@ namespace node_voce {
 }
 
 NAN_MODULE_INIT(init_node_voce) {
+  NAN_EXPORT(target, node_voce::get_consts);
   NAN_EXPORT(target, node_voce::init);
   NAN_EXPORT(target, node_voce::destroy);
   NAN_EXPORT(target, node_voce::synthesize);
@@ -78,4 +79,4 @@ NAN_MODULE_INIT(init_node_voce) {
   NAN_EXPORT(target, node_voce::is_recognizer_enabled);
 }
 
-NODE_MODULE(node_voce_module, init_node_voce)
+NODE_MODULE(node_voce, init_node_voce)
