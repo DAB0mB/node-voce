@@ -1,0 +1,13 @@
+{
+  "name": "node-voce",
+  "version": "0.0.1",
+  "description": "Speech recognition API for NodeJS",
+  "gypfile": true,
+  "scripts": {
+    "pre-publish": "npm run build",
+    "build": "node-gyp rebuild"
+  },
+  "dependencies": {
+    "nan": "^2.4.0"
+  }
+}
