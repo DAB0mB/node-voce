@@ -5,9 +5,20 @@
   "gypfile": true,
   "scripts": {
     "pre-publish": "npm run build",
-    "build": "node-gyp rebuild"
+    "post-install": "npm run install-cpp",
+    "build": "node-gyp rebuild",
+    "install-cpp": "node helpers/cpp_packs_installer.js install"
   },
   "dependencies": {
     "nan": "^2.4.0"
+  },
+  "devDependencies": {
+    "request": "^2.79.0",
+    "rimraf": "^2.6.1",
+    "tmp": "0.0.31",
+    "unzipper": "^0.8.4"
+  },
+  "cppDependencies": {
+    "voce": "https://netix.dl.sourceforge.net/project/voce/voce/0.9.1/voce-0.9.1.zip"
   }
 }
