@@ -1,7 +1,7 @@
 #include <string>
 #include <nan.h>
 #include <v8.h>
-#include "../../cpp_modules/voce/src/c++/voce.h"
+#include <voce.h>
 
 using namespace std;
 using namespace v8;

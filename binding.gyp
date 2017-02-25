@@ -4,7 +4,12 @@
       "target_name": "node_voce",
       "sources": ["src/cpp/node_voce.cpp"],
       "cflags": ["-Wall", "-std=c++11"],
-      "include_dirs" : ["<!(node -e \"require('nan')\")"],
+      "include_dirs" : [
+        "<!(node -e \"require('nan')\")",
+        "<!(echo $JAVA_HOME)/include",
+        "<!(echo $JAVA_HOME)/include/linux",
+        "<!(pwd)/cpp_modules/voce/src/c++"
+      ],
       'xcode_settings': {
         'OTHER_CFLAGS': [
           '-std=c++11'
