@@ -10,18 +10,24 @@
         "<!(echo $JAVA_HOME)/include/linux",
         "<!(pwd)/cpp_modules/headers"
       ],
-      'xcode_settings': {
-        'OTHER_CFLAGS': [
-          '-std=c++11'
+      "libraries": [
+        "-L/usr/bin/java",
+        "-L/usr/lib/jvm/java-8-openjdk-amd64/lib/amd64",
+        "-L/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server",
+        "-ljvm"
+      ]
+      "xcode_settings": {
+        "OTHER_CFLAGS": [
+          "-std=c++11"
         ],
       },
       "conditions": [
-        ['OS=="mac"',
+        ["OS=="mac"",
           {
             "xcode_settings": {
-              'OTHER_CPLUSPLUSFLAGS' : ['-std=c++11','-stdlib=libc++'],
-              'OTHER_LDFLAGS': ['-stdlib=libc++'],
-              'MACOSX_DEPLOYMENT_TARGET': '10.7'
+              "OTHER_CPLUSPLUSFLAGS" : ["-std=c++11","-stdlib=libc++"],
+              "OTHER_LDFLAGS": ["-stdlib=libc++"],
+              "MACOSX_DEPLOYMENT_TARGET": "10.7"
             }
           }
         ]
