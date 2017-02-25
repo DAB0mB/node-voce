@@ -1,7 +1,7 @@
+const Del = require("del");
 const Fs = require("fs");
 const Path = require("path");
 const Request = require("request");
-const Rimraf = require("rimraf");
 const Tmp = require("tmp");
 const Unzipper = require("unzipper");
 const Pack = require("../package.json");
@@ -23,8 +23,7 @@ function main(argv) {
 function installCPPPacks() {
   return Promise.resolve()
     .then(createCPPPacksTempDir)
-    .then(removeCPPPacksDir)
-    .then(createCPPPacksDir)
+    .then(removeCPPPacks)
     .then(({ CPPPacksTempDir, removeCPPPacksTempDir }) => {
       let requests = Object.keys(Pack.cppDependencies).map((CPPPackName) => {
         let CPPPackURL = Pack.cppDependencies[CPPPackName];
@@ -50,26 +49,15 @@ function createCPPPacksTempDir() {
   });
 }
 
-function removeCPPPacksDir(results) {
-  return new Promise((resolve, reject) => {
-    Rimraf(CPPPacksDir, (error) => {
-      if (error)
-        reject(error);
-      else
-        resolve(results);
-    });
-  });
-}
+function removeCPPPacks(results) {
+  let patterns = [
+    CPPPacksDir + "/**",
+    "!" + CPPPacksDir,
+    "!" + CPPPacksDir + "/headers",
+    "!" + CPPPacksDir + "/headers/**"
+  ];
 
-function createCPPPacksDir(results) {
-  return new Promise((resolve, reject) => {
-    Fs.mkdir(CPPPacksDir, (error) => {
-      if (error)
-        reject(error);
-      else
-        resolve(results);
-    });
-  });
+  return Del(patterns).then(() => results);
 }
 
 function installCPPPack(CPPPacksTempDir, CPPPackName, CPPPackURL) {

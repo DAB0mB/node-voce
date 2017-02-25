@@ -8,7 +8,7 @@
         "<!(node -e \"require('nan')\")",
         "<!(echo $JAVA_HOME)/include",
         "<!(echo $JAVA_HOME)/include/linux",
-        "<!(pwd)/cpp_modules"
+        "<!(pwd)/cpp_modules/headers"
       ],
       'xcode_settings': {
         'OTHER_CFLAGS': [

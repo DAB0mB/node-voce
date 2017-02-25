@@ -7,14 +7,14 @@
     "pre-publish": "npm run build",
     "post-install": "npm run install-cpp",
     "build": "node-gyp rebuild",
-    "install-cpp": "node helpers/cpp_packs_installer.js install"
+    "install-cpp": "node helpers/cpp_installer.js install"
   },
   "dependencies": {
     "nan": "^2.4.0"
   },
   "devDependencies": {
+    "del": "^2.2.2",
     "request": "^2.79.0",
-    "rimraf": "^2.6.1",
     "tmp": "0.0.31",
     "unzipper": "^0.8.4"
   },

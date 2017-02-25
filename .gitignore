@@ -1,4 +1,5 @@
 build
-cpp_modules
 node_modules
 npm-debug.log
+cpp_modules/*
+!cpp_modules/headers
