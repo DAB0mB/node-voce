@@ -1,5 +1,5 @@
-var Util = require('util');
-var VoceNative = require('./build/Release/node_voce');
+var Util = require("util");
+var VoceNative = require("./build/Release/node_voce");
 
 var extend = Util._extend || Object.assign;
 

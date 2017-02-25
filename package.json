@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Speech recognition API for NodeJS",
   "gypfile": true,
+  "main": "src/js/node_voce.js",
   "scripts": {
     "pre-publish": "npm run build",
     "post-install": "npm run install-cpp",
