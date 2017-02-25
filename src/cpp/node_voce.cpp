@@ -8,8 +8,8 @@ using namespace v8;
 using namespace Nan;
 
 namespace node_voce {
-  NAN_EXPORT(get_consts) {
-    Local<Object> js_consts = New<Object>().ToLocalChecked();
+  NAN_METHOD(get_consts) {
+    Local<Object> js_consts = New<Object>();
 
     js_consts->Set(New<String>("pathSeparator").ToLocalChecked(), New<String>(voce::pathSeparator).ToLocalChecked());
 
@@ -19,11 +19,11 @@ namespace node_voce {
   NAN_METHOD(init) {
     Local<Object> js_options = To<Object>(info[0]).ToLocalChecked();
 
-    string voce_path = To<string>(js_options->Get(New<String>("vocePath").ToLocalChecked())).FromJust();
+    const string voce_path = *(Utf8String)Get(js_options, New<String>("name").ToLocalChecked()).ToLocalChecked()->ToString();
     bool init_synthesis = To<bool>(js_options->Get(New<String>("initSynthesis").ToLocalChecked())).FromJust();
     bool init_recognition = To<bool>(js_options->Get(New<String>("initRecognition").ToLocalChecked())).FromJust();
-    string grammar_path = To<string>(js_options->Get(New<String>("grammarPath").ToLocalChecked())).FromJust();
-    string grammar_name = To<string>(js_options->Get(New<String>("grammarName").ToLocalChecked())).FromJust();
+    const string grammar_path = *(Utf8String)Get(js_options, New<String>("grammarPath").ToLocalChecked()).ToLocalChecked()->ToString();
+    const string grammar_name = *(Utf8String)Get(js_options, New<String>("grammarName").ToLocalChecked()).ToLocalChecked()->ToString();
 
     voce::init(voce_path, init_synthesis, init_recognition, grammar_path, grammar_name);
   }
@@ -33,9 +33,9 @@ namespace node_voce {
   }
 
   NAN_METHOD(synthesize) {
-    const string& message = To<const string&>(info[0]).ToLocalChecked().FromJust();
+    const string message = *(Utf8String)To<String>(info[0]).ToLocalChecked()->ToString();
 
-    voce_synthesize(message);
+    voce::synthesize(message);
   }
 
   NAN_METHOD(stop_synthesizing) {
@@ -49,13 +49,13 @@ namespace node_voce {
   }
 
   NAN_METHOD(pop_recognized_string) {
-    int recognized_string = voce::popRecognizedString();
+    string recognized_string = voce::popRecognizedString();
 
-    info.GetReturnValue().Set(recognized_string);
+    info.GetReturnValue().Set(New<String>(recognized_string).ToLocalChecked());
   }
 
   NAN_METHOD(set_recognizer_enabled) {
-    bool recognizer_enabled = To<bool>(info[0]).ToLocalChecked().FromJust();
+    bool recognizer_enabled = To<bool>(info[0]).FromJust();
 
     voce::setRecognizerEnabled(recognizer_enabled);
   }
