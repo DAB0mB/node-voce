@@ -10,6 +10,10 @@ let CPPPacksDir = Path.resolve(__dirname, "../cpp_modules");
 
 function main(argv) {
   if (argv.indexOf("install") != -1) {
+    console.log("Node.JS Voce");
+    console.log("------------");
+    console.log("Installing C++ packages...")
+
     installCPPPacks()
       .then(() => {
         console.log("\n  🌟 All C++ packages have been successfully installed 🌟\n");
