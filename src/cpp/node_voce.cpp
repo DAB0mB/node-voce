@@ -19,7 +19,7 @@ namespace node_voce {
   NAN_METHOD(init) {
     Local<Object> js_options = To<Object>(info[0]).ToLocalChecked();
 
-    const string voce_path = *(Utf8String)Get(js_options, New<String>("name").ToLocalChecked()).ToLocalChecked()->ToString();
+    const string voce_path = *(Utf8String)Get(js_options, New<String>("vocePath").ToLocalChecked()).ToLocalChecked()->ToString();
     bool init_synthesis = To<bool>(js_options->Get(New<String>("initSynthesis").ToLocalChecked())).FromJust();
     bool init_recognition = To<bool>(js_options->Get(New<String>("initRecognition").ToLocalChecked())).FromJust();
     const string grammar_path = *(Utf8String)Get(js_options, New<String>("grammarPath").ToLocalChecked()).ToLocalChecked()->ToString();

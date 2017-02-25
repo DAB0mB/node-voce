@@ -19,7 +19,7 @@ function main(argv) {
         console.log("\n  🌟 All C++ packages have been successfully installed 🌟\n");
       }, (error) => {
         console.error(error);
-        process.exit(0);
+        process.exit(1);
       });
   }
 }

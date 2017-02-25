@@ -5,10 +5,10 @@
   "gypfile": true,
   "main": "src/js/node_voce.js",
   "scripts": {
-    "pre-publish": "npm run build",
+    "pre-publish": "npm run install-cpp && npm run build",
     "install": "npm run install-cpp",
-    "build": "node-gyp rebuild",
-    "install-cpp": "node helpers/cpp_installer.js install"
+    "install-cpp": "node helpers/cpp_installer.js install",
+    "build": "node-gyp rebuild"
   },
   "devDependencies": {
     "del": "^2.2.2",
