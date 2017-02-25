@@ -11,18 +11,15 @@
         "<!(pwd)/cpp_modules/headers"
       ],
       "libraries": [
-        "-L/usr/bin/java",
-        "-L/usr/lib/jvm/java-8-openjdk-amd64/lib/amd64",
-        "-L/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64/server",
-        "-ljvm"
-      ]
+        "<!(echo $JAVA_HOME)/jre/lib/amd64/server/libjvm.so"
+      ],
       "xcode_settings": {
         "OTHER_CFLAGS": [
           "-std=c++11"
         ],
       },
       "conditions": [
-        ["OS=="mac"",
+        ["OS=='mac'",
           {
             "xcode_settings": {
               "OTHER_CPLUSPLUSFLAGS" : ["-std=c++11","-stdlib=libc++"],

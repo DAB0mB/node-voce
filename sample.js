@@ -5,7 +5,7 @@ Voce.init({
   vocePath: Path.resolve(__dirname, "cpp_modules/voce/voce-0.9.1/lib"),
   initSynthesis: false,
   initRecognition: true,
-  grammarPath: Path.resolve(__dirname, "cpp_modules/voce/voce-0.9.1/samples/recognitionTest/grammar"),
+  grammarPath: Path.resolve(__dirname, "cpp_modules/voce/voce-0.9.1/samples/recognitionTest/c++/grammar"),
   grammarName: "digits"
 });
 

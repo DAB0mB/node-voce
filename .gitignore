@@ -1,5 +1,6 @@
 build
 node_modules
+hs_err_pid1*
 npm-debug.log
 cpp_modules/*
 !cpp_modules/headers
