@@ -11,7 +11,7 @@ namespace node_voce {
   NAN_METHOD(get_consts) {
     Local<Object> js_consts = New<Object>();
 
-    js_consts->Set(New<String>("pathSeparator").ToLocalChecked(), New<String>(voce::pathSeparator).ToLocalChecked());
+    js_consts->Set(New<String>("PATH_SEPERATOR").ToLocalChecked(), New<String>(voce::pathSeparator).ToLocalChecked());
 
     info.GetReturnValue().Set(js_consts);
   }
@@ -68,15 +68,17 @@ namespace node_voce {
 }
 
 NAN_MODULE_INIT(init_node_voce) {
-  NAN_EXPORT(target, node_voce::get_consts);
-  NAN_EXPORT(target, node_voce::init);
-  NAN_EXPORT(target, node_voce::destroy);
-  NAN_EXPORT(target, node_voce::synthesize);
-  NAN_EXPORT(target, node_voce::stop_synthesizing);
-  NAN_EXPORT(target, node_voce::get_recognizer_queue_size);
-  NAN_EXPORT(target, node_voce::pop_recognized_string);
-  NAN_EXPORT(target, node_voce::set_recognizer_enabled);
-  NAN_EXPORT(target, node_voce::is_recognizer_enabled);
+  using namespace node_voce;
+
+  NAN_EXPORT(target, get_consts);
+  NAN_EXPORT(target, init);
+  NAN_EXPORT(target, destroy);
+  NAN_EXPORT(target, synthesize);
+  NAN_EXPORT(target, stop_synthesizing);
+  NAN_EXPORT(target, get_recognizer_queue_size);
+  NAN_EXPORT(target, pop_recognized_string);
+  NAN_EXPORT(target, set_recognizer_enabled);
+  NAN_EXPORT(target, is_recognizer_enabled);
 }
 
 NODE_MODULE(node_voce, init_node_voce)
